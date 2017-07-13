@@ -1,0 +1,4 @@
+server.port=8086
+
+#访问路径的前缀
+server.context-path=/path
