@@ -38,6 +38,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+        <!--Spring官方模板，现在大多数都是前后端分离的，后端只提供接口，不建议使用模板了-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+
+
 	</dependencies>
 
 	<build>
