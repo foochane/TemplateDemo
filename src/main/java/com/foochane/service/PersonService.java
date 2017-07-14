@@ -34,9 +34,9 @@ public class PersonService {
         personRepository.save(personB);
     }
 
-    public Person getAge(Integer id) throws Exception{
-        Person girl = personRepository.findOne(id);
-        Integer age = girl.getAge();
+    public Person setByAge(Integer id) throws Exception{
+        Person person = personRepository.findOne(id);
+        Integer age = person.getAge();
         if (age < 10) {
             //返回"你还在上小学吧" code=100
             throw new PersonException(ResultEnum.PRIMARY_SCHOOL);
@@ -45,13 +45,11 @@ public class PersonService {
             throw new PersonException(ResultEnum.MIDDLE_SCHOOL);
         }else {
             //操作。。。。
-            return girl;
+            return person;
         }
 
     }
 
-
-    
     /**
      * 通过Id查询一个人的信息
      * @param id

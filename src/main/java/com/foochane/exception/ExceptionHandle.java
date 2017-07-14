@@ -1,5 +1,6 @@
 package com.foochane.exception;
 
+import com.foochane.enums.ResultEnum;
 import com.foochane.utils.Result;
 import com.foochane.utils.ResultUtil;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ public class ExceptionHandle {
             return ResultUtil.error(girlException.getCode(), girlException.getMessage());
         }else {
             logger.error("【系统异常】{}", e);
-            return ResultUtil.error(-1, "未知错误");
+            return ResultUtil.error(ResultEnum.UNKONW_ERROR.getCode(),ResultEnum.UNKONW_ERROR.getMsg() );
         }
     }
 }
