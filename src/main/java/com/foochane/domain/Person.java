@@ -14,15 +14,15 @@ import javax.validation.constraints.NotNull;
 
 //跟数据库对应的类，下面的属性值会对于数据库中的字段，在数据库中自动创建表和字段
 @Entity
-public class Girl {
+public class Person {
     @Id
     @GeneratedValue
     private Integer id;
 
     @NotBlank(message = "这个字段必传")
-    private String cupSize;
+    private String name;
 
-    @Min(value = 18, message = "未成年禁止入门")
+    @Min(value = 18, message = "未满18岁")
 //    @NotNull
 //    @Max()
 //    @Length()
@@ -31,7 +31,7 @@ public class Girl {
     @NotNull(message = "金额必传")
     private Double money;
 
-    public Girl() {
+    public Person() {
     }
 
     public Integer getId() {
@@ -42,12 +42,12 @@ public class Girl {
         this.id = id;
     }
 
-    public String getCupSize() {
-        return cupSize;
+    public String getName() {
+        return name;
     }
 
-    public void setCupSize(String cupSize) {
-        this.cupSize = cupSize;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getAge() {
@@ -68,9 +68,9 @@ public class Girl {
 
     @Override
     public String toString() {
-        return "Girl{" +
+        return "Person{" +
                 "id=" + id +
-                ", cupSize='" + cupSize + '\'' +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", money=" + money +
                 '}';
