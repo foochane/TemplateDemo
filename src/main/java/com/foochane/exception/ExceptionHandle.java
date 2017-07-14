@@ -20,8 +20,8 @@ public class ExceptionHandle {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Result handle(Exception e) {
-        if (e instanceof PersonException) {
-            PersonException girlException = (PersonException) e;
+        if (e instanceof ExceptionBase) {
+            ExceptionBase girlException = (ExceptionBase) e;
             return ResultUtil.error(girlException.getCode(), girlException.getMessage());
         }else {
             logger.error("【系统异常】{}", e);

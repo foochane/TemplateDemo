@@ -5,11 +5,11 @@ import com.foochane.enums.ResultEnum;
 /**
  * Created by fucheng on 2017/7/14.
  */
-public class PersonException extends RuntimeException{
+public class ExceptionBase extends RuntimeException{
 
     private Integer code;
 
-    public PersonException(ResultEnum resultEnum) {
+    public ExceptionBase(ResultEnum resultEnum) {
         super(resultEnum.getMsg());
         this.code = resultEnum.getCode();
     }
