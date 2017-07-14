@@ -1,5 +1,7 @@
-package com.foochane;
+package com.foochane.service;
 
+import com.foochane.domain.Girl;
+import com.foochane.repository.GirlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

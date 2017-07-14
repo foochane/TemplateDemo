@@ -1,4 +1,4 @@
-package com.foochane;
+package com.foochane.repository;
 
 import com.foochane.domain.Girl;
 import org.springframework.data.jpa.repository.JpaRepository;

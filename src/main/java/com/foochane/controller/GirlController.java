@@ -1,5 +1,8 @@
-package com.foochane;
+package com.foochane.controller;
 
+import com.foochane.domain.Girl;
+import com.foochane.repository.GirlRepository;
+import com.foochane.service.GirlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

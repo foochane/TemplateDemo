@@ -1,4 +1,4 @@
-package com.foochane;
+package com.foochane.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

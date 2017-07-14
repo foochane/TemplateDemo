@@ -1,4 +1,4 @@
-package com.foochane;
+package com.foochane.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
