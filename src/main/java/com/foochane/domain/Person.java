@@ -22,10 +22,11 @@ public class Person {
     @NotBlank(message = "这个字段必传")
     private String name;
 
-    @Min(value = 18, message = "未满18岁")
+
 //    @NotNull
 //    @Max()
 //    @Length()
+    @Min(value = 18, message = "未满18岁")
     private Integer age;
 
     @NotNull(message = "金额必传")

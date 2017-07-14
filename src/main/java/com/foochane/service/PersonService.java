@@ -23,12 +23,14 @@ public class PersonService {
         Person personA = new Person();
         personA.setName("A");
         personA.setAge(18);
+        personA.setMoney(23.3);
         personRepository.save(personA);
 
 
         Person personB = new Person();
         personB.setName("B");
         personB.setAge(19);
+        personB.setMoney(1.1);
         personRepository.save(personB);
     }
 
@@ -46,10 +48,10 @@ public class PersonService {
             return girl;
         }
 
-        //如果>16岁,加钱
-        //...
     }
 
+
+    
     /**
      * 通过Id查询一个人的信息
      * @param id
