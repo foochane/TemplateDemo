@@ -6,6 +6,7 @@ import com.foochane.exception.ExceptionBase;
 import com.foochane.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -77,6 +78,12 @@ public class PersonService {
             return person;
         }
 
+    }
+
+    @Transactional
+    public String updateNameById(Integer id,String name){
+        personRepository.updateNameById(id,name);
+        return "修改成功";
     }
 
 

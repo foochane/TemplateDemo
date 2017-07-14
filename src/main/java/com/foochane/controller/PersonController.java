@@ -2,10 +2,12 @@ package com.foochane.controller;
 
 import com.foochane.domain.Person;
 import com.foochane.enums.ResultEnum;
+import com.foochane.repository.PersonRepository;
 import com.foochane.service.PersonService;
 import com.foochane.utils.Result;
 import com.foochane.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,9 @@ public class PersonController {
 
     @Autowired
     private PersonService personService;
+
+    @Autowired
+    private PersonRepository personRepository;
 
     /**
      * 添加
@@ -94,5 +99,38 @@ public class PersonController {
     public Result<Person> setByAge(@PathVariable("id") Integer id) throws Exception{
         return ResultUtil.success(personService.setByAge(id));
     }
+
+
+
+    @GetMapping(value = "get/max/id")
+    public Result<Person> getPersonByMaxId() throws Exception{
+        return ResultUtil.success(personRepository.getPersonByMaxId());
+    }
+
+    @GetMapping(value = "get/nameAndAge")
+    public Result<List> getByNameAndAge(@Param("name") String name,
+                                        @Param("age") Integer age) throws Exception{
+        return ResultUtil.success(personRepository.getByNameAndAge2(name,age));
+    }
+/*    @GetMapping(value = "get/nameAndAge")
+    public Result<List> getByNameAndAge(@PathVariable("name") String name){
+        return ResultUtil.success(personRepository.getByNameMsg(name));
+    }*/
+
+    @GetMapping(value = "get/count")
+    public Result<List> getCount() throws Exception{
+        return ResultUtil.success(personRepository.getCount());
+    }
+
+
+    @PostMapping(value = "update/name")
+    public Result<List> updateNameById(@Param("name") String name,
+                                       @Param("id") Integer id) throws Exception{
+        return ResultUtil.success(personService.updateNameById(id,name));
+    }
+
+
+
+
 
 }
