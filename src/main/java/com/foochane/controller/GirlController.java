@@ -1,11 +1,15 @@
 package com.foochane.controller;
 
 import com.foochane.domain.Girl;
+import com.foochane.domain.Result;
 import com.foochane.repository.GirlRepository;
 import com.foochane.service.GirlService;
+import com.foochane.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -31,18 +35,24 @@ public class GirlController {
 
     /**
      * 添加
-     * @param cupSize
-     * @param age
      * @return
      */
     @PostMapping(value = "/add")
-    public Girl girlAdd(@RequestParam("cupSize") String cupSize,
+    public Result<Girl> girlAdd(@Valid Girl girl , BindingResult bindingResult){
+        //发生错误，打印错误，并return null
+        if(bindingResult.hasErrors()){
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+            return null;
+        }
+        return ResultUtil.success(girlRepository.save(girl));
+    }
+    /*public Girl girlAdd(@RequestParam("cupSize") String cupSize,
                               @RequestParam("age") Integer age){
         Girl girl = new Girl();
         girl.setCupSize(cupSize);
         girl.setAge(age);
         return girlRepository.save(girl);
-    }
+    }*/
 
     /**
      * 通过id查询
@@ -96,5 +106,9 @@ public class GirlController {
     }
 
 
+    @GetMapping(value = "girls/getAge/{id}")
+    public void getAge(@PathVariable("id") Integer id) throws Exception{
+        girlService.getAge(id);
+    }
 
 }

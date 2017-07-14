@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * Created by fucheng on 2017/7/13.
  */
 
-//把配置文件中带前缀为girl的属性映射过来
+//把配置文件中带前缀为girl的属性映射过来，取到配置文件中的字段
 @Component
 @ConfigurationProperties(prefix = "girl")
 public class PersonProperties {
