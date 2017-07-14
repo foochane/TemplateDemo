@@ -1,4 +1,4 @@
-package com.foochane.domain;
+package com.foochane.utils;
 
 /**
  * http请求返回的最外层对象

@@ -1,7 +1,7 @@
 package com.foochane.controller;
 
 import com.foochane.domain.Girl;
-import com.foochane.domain.Result;
+import com.foochane.utils.Result;
 import com.foochane.repository.GirlRepository;
 import com.foochane.service.GirlService;
 import com.foochane.utils.ResultUtil;
@@ -41,8 +41,9 @@ public class GirlController {
     public Result<Girl> girlAdd(@Valid Girl girl , BindingResult bindingResult){
         //发生错误，打印错误，并return null
         if(bindingResult.hasErrors()){
-            System.out.println(bindingResult.getFieldError().getDefaultMessage());
-            return null;
+            /*System.out.println(bindingResult.getFieldError().getDefaultMessage());
+            return null;*/
+            return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
         }
         return ResultUtil.success(girlRepository.save(girl));
     }
@@ -107,8 +108,9 @@ public class GirlController {
 
 
     @GetMapping(value = "girls/getAge/{id}")
-    public void getAge(@PathVariable("id") Integer id) throws Exception{
-        girlService.getAge(id);
+    public Result<Girl> getAge(@PathVariable("id") Integer id) throws Exception{
+        //girlService.getAge(id);
+        return ResultUtil.success(girlService.getAge(id));
     }
 
 }

@@ -1,7 +1,6 @@
-package com.foochane.handle;
+package com.foochane.exception;
 
-import com.foochane.domain.Result;
-import com.foochane.exception.GirlException;
+import com.foochane.utils.Result;
 import com.foochane.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

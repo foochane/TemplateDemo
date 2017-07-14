@@ -1,7 +1,5 @@
 package com.foochane.utils;
 
-import com.foochane.domain.Result;
-
 /**
  * Created by fucheng on 2017/7/14.
  */

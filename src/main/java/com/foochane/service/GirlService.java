@@ -32,7 +32,7 @@ public class GirlService {
         girlRepository.save(girlB);
     }
 
-    public void getAge(Integer id) throws Exception{
+    public Girl getAge(Integer id) throws Exception{
         Girl girl = girlRepository.findOne(id);
         Integer age = girl.getAge();
         if (age < 10) {
@@ -41,6 +41,9 @@ public class GirlService {
         }else if (age > 10 && age < 16) {
             //返回"你可能在上初中" code=101
             throw new GirlException(ResultEnum.MIDDLE_SCHOOL);
+        }else {
+            //操作。。。。
+            return girl;
         }
 
         //如果>16岁,加钱
