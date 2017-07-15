@@ -2,7 +2,7 @@ package com.foochane.controller;
 
 import com.foochane.domain.Person;
 import com.foochane.enums.ResultEnum;
-import com.foochane.repository.PersonRepository;
+import com.foochane.repository.PersonJpaRepository;
 import com.foochane.service.PersonService;
 import com.foochane.utils.Result;
 import com.foochane.utils.ResultUtil;
@@ -24,7 +24,8 @@ public class PersonController {
     private PersonService personService;
 
     @Autowired
-    private PersonRepository personRepository;
+    private PersonJpaRepository personJpaRepository;
+
 
     /**
      * 添加
@@ -104,22 +105,24 @@ public class PersonController {
 
     @GetMapping(value = "get/max/id")
     public Result<Person> getPersonByMaxId() throws Exception{
-        return ResultUtil.success(personRepository.getPersonByMaxId());
+        return ResultUtil.success(personJpaRepository.getPersonByMaxId());
     }
 
     @GetMapping(value = "get/nameAndAge")
     public Result<List> getByNameAndAge(@Param("name") String name,
                                         @Param("age") Integer age) throws Exception{
-        return ResultUtil.success(personRepository.getByNameAndAge2(name,age));
+        return ResultUtil.success(personJpaRepository.getByNameAndAge2(name,age));
     }
-/*    @GetMapping(value = "get/nameAndAge")
+
+
+  /*  @GetMapping(value = "get/msg")
     public Result<List> getByNameAndAge(@PathVariable("name") String name){
         return ResultUtil.success(personRepository.getByNameMsg(name));
     }*/
 
     @GetMapping(value = "get/count")
     public Result<List> getCount() throws Exception{
-        return ResultUtil.success(personRepository.getCount());
+        return ResultUtil.success(personJpaRepository.getCount());
     }
 
 

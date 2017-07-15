@@ -3,7 +3,7 @@ package com.foochane.service;
 import com.foochane.domain.Person;
 import com.foochane.enums.ResultEnum;
 import com.foochane.exception.ExceptionBase;
-import com.foochane.repository.PersonRepository;
+import com.foochane.repository.PersonJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ import java.util.List;
 public class PersonService {
 
     @Autowired
-    private PersonRepository personRepository;
+    private PersonJpaRepository personJpaRepository;
 
     /**
      * 添加 /更新
@@ -25,7 +25,7 @@ public class PersonService {
      * @return 返回对象
      */
     public Person save(Person person){
-        return personRepository.save(person);
+        return personJpaRepository.save(person);
     }
 
     /**
@@ -34,7 +34,7 @@ public class PersonService {
      * @return
      */
     public Person getById(Integer id) {
-        return personRepository.findOne(id);
+        return personJpaRepository.findOne(id);
     }
 
     /**
@@ -42,7 +42,7 @@ public class PersonService {
      * @returng
      */
     public List<Person>getList(){
-        return personRepository.findAll();
+        return personJpaRepository.findAll();
     }
 
     /**
@@ -50,7 +50,7 @@ public class PersonService {
      * @param id
      */
     public String delete (Integer id){
-        personRepository.delete(id);
+        personJpaRepository.delete(id);
         return "删除成功";
     }
 
@@ -60,12 +60,12 @@ public class PersonService {
      * @return
      */
     public List<Person> getListByAge(Integer age){
-        return personRepository.findByAge(age);
+        return personJpaRepository.findByAge(age);
     }
 
 
     public Person setByAge(Integer id) throws Exception{
-        Person person = personRepository.findOne(id);
+        Person person = personJpaRepository.findOne(id);
         Integer age = person.getAge();
         if (age < 10) {
             //返回"你还在上小学吧" code=100
@@ -82,7 +82,7 @@ public class PersonService {
 
     @Transactional
     public String updateNameById(Integer id,String name){
-        personRepository.updateNameById(id,name);
+        personJpaRepository.updateNameById(id,name);
         return "修改成功";
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by fucheng on 2017/7/13.
  */
-public interface PersonRepository extends JpaRepository<Person,Integer> {
+public interface PersonJpaRepository extends JpaRepository<Person,Integer> {
 
     //方法名只能按照这个格式来写
     //通过年龄来查询
@@ -37,8 +37,8 @@ public interface PersonRepository extends JpaRepository<Person,Integer> {
     @Query(nativeQuery = true, value = "select count(1) from Person")
     public long getCount();
 
-    //涉及事务操作，需要在service层进行小狐狸
-    //更新id更改nam
+    //涉及事务操作，需要在service层进行处理
+    //通过id更改name
     @Modifying
     @Query("update Person o set o.name = :name where o.id = :id")
     public void updateNameById(@Param("id")Integer id, @Param("name")String name);
