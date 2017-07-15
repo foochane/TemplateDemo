@@ -138,6 +138,10 @@ public class PersonController {
         return ResultUtil.success(personService.deleteByName(name));
     }*/
 
+    @PostMapping(value = "save/list")
+    public Result<List> savePersonList(@RequestBody List<Person> list ) throws Exception{
+        return ResultUtil.success(personService.savePersonList(list));
+    }
 
 
 

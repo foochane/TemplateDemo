@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 
 //跟数据库对应的类，下面的属性值会对于数据库中的字段，在数据库中自动创建表和字段
 @Entity
+//@Table(name = "test_person")  表的名字
 public class Person {
     @Id
     @GeneratedValue

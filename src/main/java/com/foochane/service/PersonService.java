@@ -3,6 +3,7 @@ package com.foochane.service;
 import com.foochane.domain.Person;
 import com.foochane.enums.ResultEnum;
 import com.foochane.exception.ExceptionBase;
+import com.foochane.repository.PersonCrudRepository;
 import com.foochane.repository.PersonJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
+ * 涉及到保存/修改/删除的应该在service层
  * Created by fucheng on 2017/7/13.
  */
 @Service
@@ -18,6 +20,9 @@ public class PersonService {
 
     @Autowired
     private PersonJpaRepository personJpaRepository;
+
+    @Autowired
+    private PersonCrudRepository personCrudRepository;
 
     /**
      * 添加 /更新
@@ -87,10 +92,15 @@ public class PersonService {
     }
 
 
-  /*  public String deleteByName(String name){
+   /*  public String deleteByName(String name){
         personJpaRepository.deleteByName(name);
         return "删除成功";
     }*/
+
+
+   public Iterable<Person> savePersonList(List<Person> personList){
+       return personCrudRepository.save(personList);
+   }
 
 
 }
