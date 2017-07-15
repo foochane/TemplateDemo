@@ -87,4 +87,10 @@ public class PersonService {
     }
 
 
+  /*  public String deleteByName(String name){
+        personJpaRepository.deleteByName(name);
+        return "删除成功";
+    }*/
+
+
 }

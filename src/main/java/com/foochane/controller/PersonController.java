@@ -133,6 +133,12 @@ public class PersonController {
     }
 
 
+  /*  @PostMapping(value = "delete/name")
+    public Result<Object> deleteByName(@Param("name") String name) throws Exception{
+        return ResultUtil.success(personService.deleteByName(name));
+    }*/
+
+
 
 
 

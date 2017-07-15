@@ -30,18 +30,24 @@ public interface PersonJpaRepository extends JpaRepository<Person,Integer> {
 
     //有问题。。。。,估计是要继承Repository才行
     //like查询
-    @Query("select o from Person o where o.name like %?1%")
-    public List<Person> getByNameMsg(String name);
+    //@Query("select o from Person o where o.name like %?1%")
+   // public List<Person> getByNameMsg(String name);
 
     //查询数量
     @Query(nativeQuery = true, value = "select count(1) from Person")
     public long getCount();
 
+    //@Modifying和 @Query结合执行更新操作
     //涉及事务操作，需要在service层进行处理
     //通过id更改name
     @Modifying
     @Query("update Person o set o.name = :name where o.id = :id")
     public void updateNameById(@Param("id")Integer id, @Param("name")String name);
+
+
+    //通过name删除  在service层进行处理
+    //@Query("delete  from person   where  name=:name")
+    //public void deleteByName(@Param("name")String name);
 
 
 
