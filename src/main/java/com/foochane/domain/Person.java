@@ -68,6 +68,7 @@ public class Person {
         this.money = money;
     }
 
+
     @Override
     public String toString() {
         return "Person{" +

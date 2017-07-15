@@ -5,7 +5,12 @@ import com.foochane.enums.ResultEnum;
 import com.foochane.exception.ExceptionBase;
 import com.foochane.repository.PersonCrudRepository;
 import com.foochane.repository.PersonJpaRepository;
+import com.foochane.repository.PersonPagingAndSortingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +28,9 @@ public class PersonService {
 
     @Autowired
     private PersonCrudRepository personCrudRepository;
+
+    @Autowired
+    private PersonPagingAndSortingRepository personPagingAndSortingRepository;
 
     /**
      * 添加 /更新
@@ -101,6 +109,36 @@ public class PersonService {
    public Iterable<Person> savePersonList(List<Person> personList){
        return personCrudRepository.save(personList);
    }
+
+
+   //分页
+   public void PageList(){
+       //page:index是从0开始的
+       Pageable pageable = new PageRequest(0,10);
+       Page<Person> page = personPagingAndSortingRepository.findAll(pageable);
+
+       System.out.println("查询的总页数"+page.getTotalPages());
+       System.out.println("查询的总记录数"+page.getTotalElements());
+       System.out.println("查询当前第几页"+page.getNumber()+1);
+       System.out.println("查询当前页的集合"+page.getContent());
+       System.out.println("查询当前页面的记录书"+page.getNumberOfElements());
+   }
+
+    //分页 并且排序
+    public void PageAndSort(){
+
+        Sort.Order order = new Sort.Order(Sort.Direction.DESC,"id");
+        Sort sort = new Sort(order);
+        //page:index是从0开始的
+        Pageable pageable = new PageRequest(0,5,sort);
+        Page<Person> page = personPagingAndSortingRepository.findAll(pageable);
+
+        System.out.println("查询的总页数"+page.getTotalPages());
+        System.out.println("查询的总记录数"+page.getTotalElements());
+        System.out.println("查询当前第几页"+page.getNumber()+1);
+        System.out.println("查询当前页的集合"+page.getContent());
+        System.out.println("查询当前页面的记录书"+page.getNumberOfElements());
+    }
 
 
 }

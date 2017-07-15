@@ -143,6 +143,16 @@ public class PersonController {
         return ResultUtil.success(personService.savePersonList(list));
     }
 
+    @GetMapping(value = "get/pageList")
+    public void PageList(){
+        personService.PageList();
+    }
+
+    @GetMapping(value = "get/page/sort")
+    public void PageAndSort(){
+        personService.PageAndSort();
+    }
+
 
 
 
