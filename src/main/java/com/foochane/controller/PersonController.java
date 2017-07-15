@@ -153,6 +153,11 @@ public class PersonController {
         personService.PageAndSort();
     }
 
+    @GetMapping(value = "get/page/sort/query")
+    public void PageSortAndQuery(){
+        personService.PageSortAndQuery();
+    }
+
 
 
 
